@@ -13,7 +13,7 @@ if not os.path.isdir('models'):
 
 
 # # Preprocessing Data
-
+##Taking only 3 classes from cifar10 dataset 
 
 def get_three_classes(x, y):
     def indices_of(class_id):
