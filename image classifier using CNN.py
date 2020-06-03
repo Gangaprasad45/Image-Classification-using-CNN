@@ -1,11 +1,5 @@
-#!/usr/bin/env python
-# coding: utf-8
 
 # # Image Classification with CNNs using Keras
-
-# # Libraries
-
-# In[1]:
 
 
 import tensorflow as tf
@@ -19,8 +13,6 @@ if not os.path.isdir('models'):
 
 
 # # Preprocessing Data
-
-# In[2]:
 
 
 def get_three_classes(x, y):
@@ -44,15 +36,6 @@ def get_three_classes(x, y):
     return x, y
 
 
-# In[ ]:
-
-
-
-
-
-# In[3]:
-
-
 (x_train, y_train), (x_test, y_test) = tf.keras.datasets.cifar10.load_data()
 
 x_train, y_train = get_three_classes(x_train, y_train)
@@ -61,10 +44,6 @@ x_test, y_test = get_three_classes(x_test, y_test)
 #print(x_train.shape, y_train.shape)
 #print(x_test.shape, y_test.shape)
 
-
-# # Showing Examples
-
-# In[4]:
 
 
 class_names = ['aeroplane', 'car', 'bird']
@@ -88,16 +67,10 @@ def show_random_examples(x, y, p):
 
 show_random_examples(x_train, y_train, y_train)
 
-
-# In[5]:
-
-
 show_random_examples(x_test, y_test, y_test)
 
 
 # # Creating  Model
-
-# In[6]:
 
 
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, BatchNormalization
@@ -134,9 +107,6 @@ model.summary()
 
 # # Training  the Model
 
-# In[ ]:
-
-
 h = model.fit(
     x_train/255., y_train,
     validation_data=(x_test/255., y_test),
@@ -150,9 +120,6 @@ h = model.fit(
 
 
 # # Final Prediction
-
-# In[ ]:
-
 
 losses = h.history['loss']
 accs = h.history['accuracy']
@@ -176,10 +143,3 @@ preds = model.predict(x_test/255.)
 
 
 show_random_examples(x_test, y_test, preds)
-
-
-
-
-
-
-
